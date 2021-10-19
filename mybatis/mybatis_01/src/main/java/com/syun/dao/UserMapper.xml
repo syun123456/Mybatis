@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<!--namespace = Class名稱-->
+<mapper namespace="com.syun.dao.UserMapper">
+  <!--id = Method名稱 resultType = Method返回的類型-->
+  <select id="getUserList" resultType="com.syun.pojo.User">
+    select * from mybatis_user
+  </select>
+  
+  <select id="getUserById" parameterType="int" resultType="com.syun.pojo.User">
+    select * from mybatis_user where id = #{id}
+  </select>
+  
+  <insert id="addUser" parameterType="com.syun.pojo.User">
+  	insert into mybatis_user (id,name,pwd) values (#{id},#{name},#{pwd})
+  </insert>
+  
+  <update id="updateUser" parameterType="com.syun.pojo.User">
+  	update mybatis_user set name=#{name}, pwd=#{pwd} where id=#{id}
+  </update>
+  
+  <delete id="deleteUser" parameterType="int">
+  	delete from mybatis_user where id = #{id}
+  </delete>
+  
+  <insert id="addUser2" parameterType="map">
+  	insert into mybatis_user (id,pwd) values (#{UserId},#{UserPassword})
+  </insert>
+  
+</mapper>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<!--namespace = Class名稱-->
+<mapper namespace="com.syun.dao.UserMapper">
+	
+	<!-- 一級緩存僅存當下sqlSession查詢資料，sqlSession關閉後，緩存資料皆清空-->
+	<!-- 使用二級緩存，作用於namespace中的查詢皆會緩存-->
+	<cache eviction="FIFO" flushInterval="60000" size="512" readOnly="true">
+	</cache>
+	
+	<select id="queryUserById" resultType="User">
+		select * from mybatis_user where id = #{id}
+	</select>
+  
+  
+</mapper>

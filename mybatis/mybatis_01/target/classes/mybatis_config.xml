@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+  <!-- 預設使用開發環境，<environment id=" ">可以配置多個環境-->
+  <environments default="development">
+    <environment id="development">
+      <transactionManager type="JDBC"/>
+      <dataSource type="POOLED">
+        <property name="driver" value="com.microsoft.sqlserver.jdbc.SQLServerDriver"/>
+        <property name="url" value="jdbc:sqlserver://0.0.0.0:1433;DatabaseName=JavaTest"/>
+        <property name="username" value="test"/>
+        <property name="password" value="javatest"/>
+      </dataSource>
+    </environment>
+  </environments>
+  
+  <!--每個Mapper.xml都需要這配置-->
+  <mappers>
+  	<mapper resource="com/syun/dao/UserMapper.xml"/>
+  </mappers>
+</configuration>

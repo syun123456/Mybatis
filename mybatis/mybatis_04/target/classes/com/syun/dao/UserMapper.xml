@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<!--namespace = Class名稱-->
+<mapper namespace="com.syun.dao.UserMapper">
+  <!--id = Method名稱 resultType = Method返回的類型-->
+  
+  <resultMap id="UserMap" type="User">
+  	<!--column放資料庫的欄位名，property放pojo類的成員名稱-->
+  	<result column="pwd" property="password"/>
+  </resultMap>
+  
+  <select id="getUserById" parameterType="int" resultMap="UserMap">
+    select * from mybatis_user where id = #{id}
+  </select>
+  
+  <select id="getUserByLimit" parameterType="map" resultMap="UserMap">
+    select * from mybatis_user where id between #{start} and #{end};
+  </select>
+  
+</mapper>

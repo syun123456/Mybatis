@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<!--namespace = Class名稱-->
+<mapper namespace="com.syun.dao.UserMapper">
+
+  <!--如果pojo類中的成員名稱跟資料庫欄位名稱不同，可以透過resultMap映射相對應的名稱-->
+  <resultMap id="UserMap" type="User">
+  	<!--column放資料庫的欄位名，property放pojo類的成員名稱-->
+  	<result column="pwd" property="password"/>
+  </resultMap>
+  
+  <!--id = Method名稱 resultType = Method返回的類型-->
+  <select id="getUserById" parameterType="int" resultMap="UserMap">
+    select * from mybatis_user where id = #{id}
+  </select>
+  
+  
+</mapper>
